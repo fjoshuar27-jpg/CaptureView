@@ -13,6 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(CaptureView
     Source/Main.cpp
     Source/Core/Application.cpp
+    Source/Core/Logger.cpp
 )
 
 target_include_directories(CaptureView PRIVATE
