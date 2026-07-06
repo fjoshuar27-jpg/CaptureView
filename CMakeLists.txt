@@ -14,8 +14,8 @@ add_executable(CaptureView
     Source/Main.cpp
     Source/Core/Application.cpp
     Source/Core/Logger.cpp
+    Source/Platform/Window.cpp
 )
-
 target_include_directories(CaptureView PRIVATE
     Include
 )
