@@ -1,5 +1,7 @@
 #pragma once
 
+#include <CaptureView/Platform/Window.hpp>
+
 namespace CaptureView::Core
 {
     class Application
@@ -11,5 +13,8 @@ namespace CaptureView::Core
         bool Initialize();
         int Run();
         void Shutdown();
+
+    private:
+        Platform::Window m_Window;
     };
 }
