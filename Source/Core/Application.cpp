@@ -7,7 +7,7 @@ namespace CaptureView::Core
     bool Application::Initialize()
     {
         Logger::Info("CaptureView 0.1.0");
-        Logger::Info("Build 0003 - First Window");
+        Logger::Info("Build 0004 - Rendering Foundation");
         Logger::Info("Initializing...");
 
         if (!m_Window.Create(L"CaptureView", 1280, 720))
@@ -22,6 +22,12 @@ namespace CaptureView::Core
             return false;
         }
 
+        if (!m_Renderer.Initialize())
+        {
+            Logger::Error("Failed to initialize renderer.");
+            return false;
+        }
+
         return true;
     }
 
@@ -31,7 +37,11 @@ namespace CaptureView::Core
 
         while (m_Window.ProcessEvents())
         {
-            // Aquí vivirá el renderizado.
+            m_Renderer.BeginFrame();
+
+            // Aquí renderizaremos el vídeo de la capturadora.
+
+            m_Renderer.EndFrame();
         }
 
         return 0;
@@ -39,6 +49,8 @@ namespace CaptureView::Core
 
     void Application::Shutdown()
     {
+        m_Renderer.Shutdown();
+
         m_Window.Destroy();
 
         Logger::Info("Shutdown complete.");
