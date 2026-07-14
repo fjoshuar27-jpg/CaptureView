@@ -14,7 +14,7 @@ namespace CaptureView::Platform
         bool Show();
         bool ProcessEvents();
         void Destroy();
-
+        void* GetNativeHandle() const;
     private:
         void* m_Handle = nullptr;
         bool m_IsOpen = false;

@@ -1,5 +1,6 @@
 #include <CaptureView/Core/Application.hpp>
 #include <CaptureView/Core/Logger.hpp>
+#include <CaptureView/Rendering/Renderer.hpp>
 
 namespace CaptureView::Core
 {
@@ -22,13 +23,13 @@ namespace CaptureView::Core
             return false;
         }
 
-        if (!m_Renderer.Initialize())
+        if (!m_Renderer.Initialize(m_Window.GetNativeHandle()))
         {
             Logger::Error("Failed to initialize renderer.");
             return false;
         }
 
-        return true;
+  
     }
 
     int Application::Run()

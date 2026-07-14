@@ -1,5 +1,7 @@
 #pragma once
 
+#include <CaptureView/Graphics/GraphicsDevice.hpp>
+
 namespace CaptureView::Rendering
 {
     class Renderer
@@ -8,7 +10,7 @@ namespace CaptureView::Rendering
         Renderer() = default;
         ~Renderer() = default;
 
-        bool Initialize();
+        bool Initialize(void* windowHandle);
 
         void BeginFrame();
 
@@ -17,6 +19,7 @@ namespace CaptureView::Rendering
         void Shutdown();
 
     private:
+        Graphics::GraphicsDevice m_GraphicsDevice;
         bool m_Initialized = false;
     };
 }

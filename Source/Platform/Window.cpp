@@ -122,5 +122,9 @@ namespace CaptureView::Platform
 
         m_IsOpen = false;
     }
+    void* Window::GetNativeHandle() const
+    {
+        return m_Handle;
+    }
 
 } // namespace CaptureView::Platform

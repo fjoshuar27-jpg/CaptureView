@@ -4,9 +4,15 @@
 namespace CaptureView::Rendering
 {
 
-    bool Renderer::Initialize()
+    bool Renderer::Initialize(void* windowHandle)
     {
         CaptureView::Core::Logger::Info("Renderer: Initializing...");
+
+        if (!m_GraphicsDevice.Initialize(windowHandle))
+        {
+            CaptureView::Core::Logger::Error("Renderer: Failed to initialize GraphicsDevice.");
+            return false;
+        }
 
         m_Initialized = true;
 
@@ -22,7 +28,7 @@ namespace CaptureView::Rendering
             return;
         }
 
-        // Preparación del frame.
+        m_GraphicsDevice.BeginFrame();
     }
 
     void Renderer::EndFrame()
@@ -32,14 +38,17 @@ namespace CaptureView::Rendering
             return;
         }
 
-        // Presentación del frame.
+        m_GraphicsDevice.EndFrame();
     }
+
     void Renderer::Shutdown()
     {
         if (!m_Initialized)
         {
             return;
         }
+
+        m_GraphicsDevice.Shutdown();
 
         CaptureView::Core::Logger::Info("Renderer: Shutdown.");
 
