@@ -1,6 +1,8 @@
 #pragma once
+
 struct ID3D11Device;
 struct ID3D11DeviceContext;
+
 namespace CaptureView::Graphics
 {
     class GraphicsDevice
@@ -19,6 +21,7 @@ namespace CaptureView::Graphics
 
     private:
         bool m_Initialized = false;
+
         ID3D11Device* m_Device = nullptr;
         ID3D11DeviceContext* m_Context = nullptr;
     };

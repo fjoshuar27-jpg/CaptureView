@@ -1,6 +1,5 @@
 #include <CaptureView/Core/Application.hpp>
 #include <CaptureView/Core/Logger.hpp>
-#include <CaptureView/Rendering/Renderer.hpp>
 
 namespace CaptureView::Core
 {
@@ -29,7 +28,7 @@ namespace CaptureView::Core
             return false;
         }
 
-  
+        return true;
     }
 
     int Application::Run()
@@ -40,7 +39,7 @@ namespace CaptureView::Core
         {
             m_Renderer.BeginFrame();
 
-            // Aquí renderizaremos el vídeo de la capturadora.
+            // Aquí vivirá el renderizado.
 
             m_Renderer.EndFrame();
         }

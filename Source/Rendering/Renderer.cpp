@@ -50,9 +50,9 @@ namespace CaptureView::Rendering
 
         m_GraphicsDevice.Shutdown();
 
-        CaptureView::Core::Logger::Info("Renderer: Shutdown.");
-
         m_Initialized = false;
+
+        CaptureView::Core::Logger::Info("Renderer: Shutdown.");
     }
 
 } // namespace CaptureView::Rendering
