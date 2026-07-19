@@ -20,6 +20,19 @@ namespace CaptureView::Graphics
         void Shutdown();
 
     private:
+
+        bool CreateDevice();
+
+        bool CreateSwapChain(void* windowHandle);
+
+        bool CreateRenderTarget();
+
+        void ReleaseRenderTarget();
+
+        void ReleaseSwapChain();
+
+        void ReleaseDevice();
+
         bool m_Initialized = false;
 
         ID3D11Device* m_Device = nullptr;

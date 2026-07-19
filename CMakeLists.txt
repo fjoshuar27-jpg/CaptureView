@@ -15,7 +15,15 @@ add_executable(CaptureView
     Source/Core/Application.cpp
     Source/Core/Logger.cpp
     Source/Platform/Window.cpp
- "Source/Rendering/Renderer.cpp" "Source/Graphics/GraphicsDevice.cpp")
+    Source/Rendering/Renderer.cpp
+    Source/Graphics/GraphicsDevice.cpp
+)
+
 target_include_directories(CaptureView PRIVATE
     Include
+)
+
+target_link_libraries(CaptureView PRIVATE
+    d3d11
+    dxgi
 )

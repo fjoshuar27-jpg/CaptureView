@@ -4,7 +4,6 @@
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 
-
 namespace
 {
     constexpr wchar_t kWindowClassName[] = L"CaptureViewWindow";
@@ -36,9 +35,10 @@ namespace CaptureView::Platform
 
     bool Window::Create(std::wstring_view title, int width, int height)
     {
+        m_Width = width;
+        m_Height = height;
+
         CaptureView::Core::Logger::Info("Creating window...");
-        CaptureView::Core::Logger::Error("CreateWindowExW failed.");
-        CaptureView::Core::Logger::Info("Window created successfully.");
 
         HINSTANCE instance = GetModuleHandleW(nullptr);
 
@@ -122,9 +122,20 @@ namespace CaptureView::Platform
 
         m_IsOpen = false;
     }
+
     void* Window::GetNativeHandle() const
     {
         return m_Handle;
+    }
+
+    int Window::GetWidth() const
+    {
+        return m_Width;
+    }
+
+    int Window::GetHeight() const
+    {
+        return m_Height;
     }
 
 } // namespace CaptureView::Platform
