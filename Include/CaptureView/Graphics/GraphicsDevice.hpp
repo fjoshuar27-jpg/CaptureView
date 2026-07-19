@@ -2,6 +2,8 @@
 
 struct ID3D11Device;
 struct ID3D11DeviceContext;
+struct IDXGISwapChain;
+struct ID3D11RenderTargetView;
 
 namespace CaptureView::Graphics
 {
@@ -37,5 +39,8 @@ namespace CaptureView::Graphics
 
         ID3D11Device* m_Device = nullptr;
         ID3D11DeviceContext* m_Context = nullptr;
+
+        IDXGISwapChain* m_SwapChain = nullptr;
+        ID3D11RenderTargetView* m_RenderTargetView = nullptr;
     };
 }
