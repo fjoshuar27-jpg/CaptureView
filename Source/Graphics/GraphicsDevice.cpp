@@ -171,7 +171,25 @@ namespace CaptureView::Graphics
 
     bool GraphicsDevice::CreateRenderTarget()
     {
-        // Próximo paso
+        ID3D11Texture2D* backBuffer = nullptr;
+
+        HRESULT result = m_SwapChain->GetBuffer(
+            0,
+            __uuidof(ID3D11Texture2D),
+            reinterpret_cast<void**>(&backBuffer));
+
+        if (FAILED(result))
+        {
+            CaptureView::Core::Logger::Error(
+                "GraphicsDevice: Failed to acquire Back Buffer.");
+
+            return false;
+        }
+        backBuffer->Release();
+
+        CaptureView::Core::Logger::Info(
+            "GraphicsDevice: Back Buffer acquired.");
+
         return true;
     }
 
